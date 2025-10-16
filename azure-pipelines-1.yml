@@ -1,0 +1,34 @@
+trigger: none     # run pipeline manually
+
+pool: linux
+
+steps: 
+- task: TerraformInstaller@1
+  displayName: terraform installer
+  inputs:
+    terraformVersion: 'latest'
+- task: TerraformTask@5
+  displayName: terraform init
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'azure-pipeline'
+    backendAzureRmOverrideSubscriptionID: 'c358465e-52de-4660-8ca6-516017cbe9f9'
+    backendAzureRmResourceGroupName: 'monu'
+    backendAzureRmStorageAccountName: 'mystorage986'
+    backendAzureRmContainerName: 'monucontainer'
+    backendAzureRmKey: 'monu.tfstate'
+- task: TerraformTask@5
+  displayName: terraform plan
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    environmentServiceNameAzureRM: 'azure-pipeline'
+    environmentAzureRmOverrideSubscriptionID: 'c358465e-52de-4660-8ca6-516017cbe9f9'
+- task: TerraformTask@5
+  displayName: terraform apply
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    environmentServiceNameAzureRM: 'azure-pipeline'
+    environmentAzureRmOverrideSubscriptionID: 'c358465e-52de-4660-8ca6-516017cbe9f9'
