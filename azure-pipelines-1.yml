@@ -19,10 +19,10 @@ steps:
     command: 'init'
     backendServiceArm: 'azure-pipeline'
     backendAzureRmOverrideSubscriptionID: 'c358465e-52de-4660-8ca6-516017cbe9f9'
-    backendAzureRmResourceGroupName: 'monu'
-    backendAzureRmStorageAccountName: 'mystorage986'
-    backendAzureRmContainerName: 'monucontainer'
-    backendAzureRmKey: 'monu.tfstate'
+    backendAzureRmResourceGroupName: 'tinu'
+    backendAzureRmStorageAccountName: 'mystorage984'
+    backendAzureRmContainerName: 'ticontainer'
+    backendAzureRmKey: 'tinu.tfstate'
   displayName: terraform init
 - task: TerraformTask@5
   inputs:
