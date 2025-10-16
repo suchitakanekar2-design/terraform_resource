@@ -12,6 +12,7 @@ steps:
   displayName: terraform installer
   inputs:
     terraformVersion: 'latest'
+
 - task: TerraformTask@5
   inputs:
     provider: 'azurerm'
@@ -22,15 +23,23 @@ steps:
     backendAzureRmStorageAccountName: 'mystorage986'
     backendAzureRmContainerName: 'monucontainer'
     backendAzureRmKey: 'monu.tfstate'
+  displayName: terraform init
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
+  displayName: terraform validate 
 - task: TerraformTask@5
   inputs:
     provider: 'azurerm'
     command: 'plan'
     environmentServiceNameAzureRM: 'azure-pipeline'
     environmentAzureRmOverrideSubscriptionID: 'c358465e-52de-4660-8ca6-516017cbe9f9'
+  displayName: terraform plan 
 - task: TerraformTask@5
   inputs:
     provider: 'azurerm'
     command: 'apply'
     environmentServiceNameAzureRM: 'azure-pipeline'
     environmentAzureRmOverrideSubscriptionID: 'c358465e-52de-4660-8ca6-516017cbe9f9'
+  displayName: terraform apply
