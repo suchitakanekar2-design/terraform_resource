@@ -3,13 +3,11 @@ trigger: none     # run pipeline manually
 pool: linux
 
 steps: 
-- task: Bash@3
-  displayName: 'Install unzip'
-  inputs:
-    targetType: 'inline'
-    script: |
-      sudo apt-get update -y
-      sudo apt-get install -y unzip
+- script: |
+    sudo apt-get update -y
+    sudo apt-get install -y unzip
+  displayName: 'Install unzip package'
+
 - task: TerraformInstaller@1
   displayName: terraform installer
   inputs:
