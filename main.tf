@@ -11,7 +11,7 @@ backend "azurerm" {}
 provider "azurerm" {
   # Configuration options
   features {}
-subscribtion = "c358465e-52de-4660-8ca6-516017cbe9f9"
+  subscribtion = "c358465e-52de-4660-8ca6-516017cbe9f9"
 }
 
 resource "azurerm_resource_group" "monu1" {
